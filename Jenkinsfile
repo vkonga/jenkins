@@ -9,7 +9,9 @@ pipeline {
 
     options {
         timeout(time: 10, unit: 'MINUTES')
-    }
+        // DisableConcurrentbuild used for build only one build at a time then move next build, it will not run two builds at a time
+        disableConcurrentBuilds()
+    }   
 
     // Build
     stages {
