@@ -7,7 +7,12 @@ pipeline {
         project = 'electronics'
     }
 
-    
+    parameters {
+        string(name: 'person', defaultValue: 'Mr jenkins', description: 'Who should I say hello to?')
+        text(name: 'BIOGRAPHY', defaultValue: '', description: 'Enter some info about the person')
+
+    }
+
     options {
         timeout(time: 10, unit: 'MINUTES')
         // DisableConcurrentbuild used for build only one build at a time then move next build, it will not run two builds at a time
@@ -24,7 +29,7 @@ pipeline {
                         echo "Hello building"
                         
                         env
-                        
+                        echo 'Hello ${params.person}'
                         """
                 }
                 
