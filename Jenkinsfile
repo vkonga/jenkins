@@ -40,7 +40,7 @@ pipeline {
                 script {
                     echo 'Testing...'
                 }
-            }
+            } 
         }
         stage('Deploy') {
             steps {
