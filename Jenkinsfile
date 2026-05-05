@@ -3,12 +3,20 @@ pipeline {
         label 'agent-1'
     }
 
+    environment {
+        project = 'electronics'
+    }
+
     // Build
     stages {
         stage('Build') {
             steps {
                 script {
-                    echo 'Building....'
+                    sh """
+
+                        echo "Hello building"
+                        env
+                        """
                 }
                 
             }
@@ -32,7 +40,7 @@ pipeline {
     post {
         always {
             echo 'I will always say hello again!'
-            deleteDir()
+            deleteDir() 
         }
         success {
             echo 'Hello success'
