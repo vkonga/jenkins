@@ -7,6 +7,10 @@ pipeline {
         project = 'electronics'
     }
 
+    options {
+        timeout(time: 1, unit: 'SECONDS')
+    }
+
     // Build
     stages {
         stage('Build') {
