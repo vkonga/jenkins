@@ -43,9 +43,20 @@ pipeline {
             } 
         }
         stage('Deploy') {
+            // To approval purpose use input
+            input {
+                message "Should we continue?"
+                ok "Yes, we should"
+                submitter "alice,bob"
+                parameters {
+                    string(name: 'person', defaultValue: 'Mr Jenkins', description: 'Who should i say helo to?')
+                }
+            }
             steps {
                 script {
+                    echo "Hello, ${person}, good to meet you"
                     echo 'Deploying...'
+
                 }
             }
         }
